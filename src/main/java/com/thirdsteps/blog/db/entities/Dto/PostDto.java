@@ -1,4 +1,4 @@
-package com.thirdsteps.blog.db.entities;
+package com.thirdsteps.blog.db.entities.Dto;
 
 import com.thirdsteps.blog.db.statuses.PostStatus;
 
@@ -10,5 +10,5 @@ public record PostDto(
     PostStatus postStatus,
     Integer views
 ) {
-    
+
 }
