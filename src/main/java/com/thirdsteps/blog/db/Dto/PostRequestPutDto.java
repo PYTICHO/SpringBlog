@@ -1,6 +1,6 @@
-package com.thirdsteps.blog.db.entities.Dto;
+package com.thirdsteps.blog.db.Dto;
 
-import com.thirdsteps.blog.db.statuses.PostStatus;
+import com.thirdsteps.blog.statuses.PostStatus;
 
 public record PostRequestPutDto(
     String author,

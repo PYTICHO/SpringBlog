@@ -2,7 +2,7 @@ package com.thirdsteps.blog.db.entities;
 
 import lombok.*;
 
-import com.thirdsteps.blog.db.statuses.PostStatus;
+import com.thirdsteps.blog.statuses.PostStatus;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -43,5 +43,5 @@ public class PostEntity {
     private PostStatus postStatus;
 
     @Column(name = "views")
-    private Integer views;
+    private Long views;
 }

@@ -1,6 +1,6 @@
-package com.thirdsteps.blog.db.entities.Dto;
+package com.thirdsteps.blog.db.Dto;
 
-import com.thirdsteps.blog.db.statuses.PostStatus;
+import com.thirdsteps.blog.statuses.PostStatus;
 
 public record PostDto(
     Long id,
@@ -8,7 +8,7 @@ public record PostDto(
     String title,
     String fullText,
     PostStatus postStatus,
-    Integer views
+    Long views
 ) {
 
 }

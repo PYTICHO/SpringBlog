@@ -2,9 +2,9 @@ package com.thirdsteps.blog.db.entities;
 
 import java.util.List;
 
-import com.thirdsteps.blog.db.entities.Dto.PostDto;
-import com.thirdsteps.blog.db.entities.Dto.PostRequestPostDto;
-import com.thirdsteps.blog.db.entities.Dto.PostRequestPutDto;
+import com.thirdsteps.blog.db.Dto.PostDto;
+import com.thirdsteps.blog.db.Dto.PostRequestPostDto;
+import com.thirdsteps.blog.db.Dto.PostRequestPutDto;
 
 import org.mapstruct.*;
 

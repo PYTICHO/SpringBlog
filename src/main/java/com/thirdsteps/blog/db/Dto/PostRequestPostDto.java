@@ -1,4 +1,4 @@
-package com.thirdsteps.blog.db.entities.Dto;
+package com.thirdsteps.blog.db.Dto;
 
 public record PostRequestPostDto(
     String author,

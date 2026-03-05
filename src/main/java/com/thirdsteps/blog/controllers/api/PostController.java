@@ -5,17 +5,14 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
-import com.thirdsteps.blog.db.PostProcessor;
+import com.thirdsteps.blog.db.Dto.PostDto;
+import com.thirdsteps.blog.db.Dto.PostRequestPostDto;
+import com.thirdsteps.blog.db.Dto.PostRequestPutDto;
 import com.thirdsteps.blog.db.entities.PostEntity;
 import com.thirdsteps.blog.db.entities.PostEntityMapper;
-import com.thirdsteps.blog.db.entities.Dto.PostDto;
-import com.thirdsteps.blog.db.entities.Dto.PostRequestPostDto;
-import com.thirdsteps.blog.db.entities.Dto.PostRequestPutDto;
+import com.thirdsteps.blog.services.PostService;
 
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
 
 
 
@@ -27,24 +24,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequestMapping("/api/posts")
 public class PostController {
 
-    private final PostProcessor postProcessor;
+    private final PostService postProcessor;
     private final PostEntityMapper postEntityMapper;
+
 
     @PostMapping()
     public PostDto create(
         @RequestBody PostRequestPostDto request
     ) {
-        log.info("Creating post: {}", request);
         PostEntity entity = postProcessor.create(request);
         PostDto entityDto = postEntityMapper.toPostDto(entity);
+        log.info("Creating post: {}", request);
+
         return entityDto;
     }
 
+
     @GetMapping()
     public List<PostDto> getAllPosts() {
+        List<PostEntity> posts = postProcessor.getAll();
+        List<PostDto> postsDto = postEntityMapper.toPostDtoList(posts);
         log.info("Return all posts");
-        List<PostDto> posts = postProcessor.getAll();
-        return posts;
+        
+        return postsDto;
     }
 
 
@@ -52,23 +54,33 @@ public class PostController {
     public PostDto getMethodName(
         @PathVariable Long id
     ) {
-        log.info("Return post with id={}", id);
         PostEntity postEntity = postProcessor.getOne(id);
         PostDto postDto = postEntityMapper.toPostDto(postEntity);
+        log.info("Return post with id={}", id);
 
         return postDto;
     }
+
     
     @PutMapping("/{id}")
     public PostDto update(
         @PathVariable Long id,
         @RequestBody PostRequestPutDto entityPutDto
     ) {
-        log.info("Update post with id={}", id);
         PostEntity updatedPostEntity = postProcessor.updatePostFromDto(id, entityPutDto);
         PostDto postDto = postEntityMapper.toPostDto(updatedPostEntity);
+        log.info("Update post with id={}", id);
 
         return postDto;
+    }
+
+
+    @DeleteMapping("/{id}")
+    public void delete(
+        @PathVariable Long id
+    ) {
+        postProcessor.delete(id);
+        log.info("Delete post with id={}", id);
     }
     
     
