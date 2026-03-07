@@ -1,7 +1,7 @@
-package com.thirdsteps.blog.db.Dto;
+package com.thirdsteps.blog.db.dto;
 
 public record PostRequestPostDto(
-    String author,
+    Long authorId,
     String title,
     String fullText
 ) {

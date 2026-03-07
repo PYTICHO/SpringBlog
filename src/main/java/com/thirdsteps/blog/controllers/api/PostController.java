@@ -5,11 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
-import com.thirdsteps.blog.db.Dto.PostDto;
-import com.thirdsteps.blog.db.Dto.PostRequestPostDto;
-import com.thirdsteps.blog.db.Dto.PostRequestPutDto;
+import com.thirdsteps.blog.db.dto.PostDto;
+import com.thirdsteps.blog.db.dto.PostRequestPostDto;
+import com.thirdsteps.blog.db.dto.PostRequestPutDto;
 import com.thirdsteps.blog.db.entities.PostEntity;
-import com.thirdsteps.blog.db.entities.PostEntityMapper;
+import com.thirdsteps.blog.db.mappers.PostEntityMapper;
 import com.thirdsteps.blog.services.PostService;
 
 import org.springframework.web.bind.annotation.*;
